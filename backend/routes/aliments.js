@@ -1,10 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const { Aliment } = require("./models");
+const { Aliment } = require("../models");
 
 /* GET users listing. */
-router.get("/", function (req, res) {
-  res.send("respond with a resource");
+router.get("/", async function (req, res) {
+  try {
+    const aliments = await Aliment.findAll();
+    res.status(200).json(aliments);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
 });
 
 router.post("/", async function (req, res) {

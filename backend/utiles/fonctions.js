@@ -9,8 +9,8 @@ const calculateMB = (masse, taille, sexe, age) => {
 const calculeBesoinMacronutrimentsQuotidient = (mb) => {
   return {
     proteines: mb * (20 / 100),
-    glucides: mb * (30 / 100),
-    lipides: mb * (50 / 100),
+    glucides: mb * (50 / 100),
+    lipides: mb * (30 / 100),
   };
 };
 
