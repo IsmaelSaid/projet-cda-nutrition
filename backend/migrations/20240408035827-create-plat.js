@@ -17,8 +17,28 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      type: {
+      typeDeRepas: {
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      calories: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      proteines: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      glucides: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      lipides: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      portion: {
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       createdAt: {

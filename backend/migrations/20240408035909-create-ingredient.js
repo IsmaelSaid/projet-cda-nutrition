@@ -9,14 +9,19 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
+      platId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      nom: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       quantite: {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
-      unite: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,

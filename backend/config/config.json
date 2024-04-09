@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "yoyo97417",
-    "database": "database_nutrition",
+    "database": "database_nutrition-test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

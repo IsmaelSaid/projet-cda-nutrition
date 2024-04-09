@@ -1,16 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const { addDish, getAllPlats, getPlat } = require("../controller/plat");
 
 /* GET users listing. */
-router.get("/", function (req, res) {
-  res.send("respond with a resource");
-});
-router.post("/", function (req, res) {
-  res.send("respond with a resource");
-});
-router.get("/:id", function (req, res) {
-  res.send("respond with a resource");
-});
+router.get("/", getAllPlats);
+router.post("/", addDish);
+router.get("/:id", getPlat);
 router.patch("/:id", function (req, res) {
   res.send("respond with a resource");
 });
