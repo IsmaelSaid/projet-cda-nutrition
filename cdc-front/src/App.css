@@ -1,0 +1,86 @@
+#root {
+  height: 100vh;
+  width: 100vw;
+
+}
+#main{
+  height: 100%;
+  width: 100%;
+  background-image: url('./assets/background.jpg');
+  background-size: cover;
+}
+#message{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+}
+#landingpagetext{
+  margin: 10px;
+  font-size: xxx-large;
+  color: white;
+}
+#messagecontainer{
+  height: 100%;
+  display: flex;
+}
+
+form{
+  background-image: url('./assets/formbackground.jpg');
+  background-size: cover;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#questioncontainer{
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.16);
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+}
+
+#buttonscontains{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+#questions{
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+}
+
+#formbutton{
+  margin: 10px;
+}
+
+#results{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-image: url('./assets/formbackground.jpg');
+  background-size: cover;
+  
+  
+}
+
+#datacontainer{
+  width: 500px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.16);
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    padding: 50px;
+}
+
+p{
+  margin: 0px
+}
