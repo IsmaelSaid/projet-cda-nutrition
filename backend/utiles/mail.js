@@ -42,7 +42,7 @@ const sendEmail = (email, nom, prenom, plan) => {
 <ul>
 ${petitDejeunerIngredientsString}
 </ul>
-<p>Calories du plat : ${plan.petit_dejeuner.plat.calories}</p>
+<p>Calories du plat : ${plan.petit_dejeuner.plat.calories} kcal</p>
 
 
 <h2>Déjeuner:</h2>
@@ -51,25 +51,31 @@ ${plan.dejeuner.plat.description}
 <ul>
 ${DejeunerIngredientsString}
 </ul>
-<p>Calories du plat : ${plan.dejeuner.plat.calories}</p>
+<p>Calories du plat : ${plan.dejeuner.plat.calories} kcal</p>
 <h2>Dîner:</h2>
 <p>Description : ${plan.diner.plat.description}</p></br>
 <ul>
 ${DinerIngredientsString}
 </ul>
-<p>Calories du plat : ${plan.diner.plat.calories}</p>
+<p>Calories du plat : ${plan.diner.plat.calories} kcal</p>
 
 
-<p>le total calorique de votre plan est de ${plan.totalCalories} </p>
-<p>le total de proteines de votre plan est de ${plan.totalProteines} </p>
-<p>le total de lipides de votre plan est de ${plan.totalGlucides} </p>
-<p>le total de glucides de votre plan est de ${plan.totalLipides} </p>
+<p>Le total calorique de votre plan est de ${plan.totalCalories} kcal </p>
+<p>Le total de proteines de votre plan est de ${plan.totalProteines.toFixed(
+    2
+  )} g </p>
+<p>Le total de lipides de votre plan est de ${plan.totalGlucides.toFixed(
+    2
+  )} g </p>
+<p>Le total de glucides de votre plan est de ${plan.totalLipides.toFixed(
+    2
+  )} g </p>
 
 <p>Je vous encourage à suivre ce programme avec discipline tout en écoutant votre corps. N'hésitez pas à me contacter si vous avez des questions ou des préoccupations.
 
 Restant à votre disposition pour toute assistance supplémentaire.
 Cordialement,<p>
-
+<img src="cid:114" alt='logo'>
 `;
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -81,6 +87,12 @@ Cordialement,<p>
       pass: "rnjp imiq qmew yyij",
     },
   });
+
+  const attachment = {
+    filename: "logo.png",
+    path: "public/images/logo.png",
+    cid: "114", // Identifiant unique de l'image
+  };
   const mailOptions = {
     from: {
       name: "Nutrition cda",
@@ -90,6 +102,7 @@ Cordialement,<p>
     subject: "Send nutrition plat",
     text: "ok",
     html: message,
+    attachments: [attachment],
   };
 
   const sendMail = async (transporter, mailOptions) => {
