@@ -33,28 +33,32 @@ const sendEmail = (email, nom, prenom, plan) => {
   );
   const message = `
   <h1>Plan nutritition</h1>
-<p>J'espère que vous allez bien. ${identite}, Suite à la soumission de votre formulaire nous vous transmettons votre programme sur la base de 5 repas quotidien.</p>
+<p>J'espère que vous allez bien ${identite}, Suite à la soumission de votre formulaire nous vous transmettons votre programme sur la base de 3 repas quotidien.</p>
 
 <h2>Petit-déjeuner:</h2>
 
-<p>${plan.petit_dejeuner.plat.nom}</p>
+<p><strong>${plan.petit_dejeuner.plat.nom}</strong></p>
 <p>Description : ${plan.petit_dejeuner.plat.description}</p></br>
-<ul>
+<p><strong>Ingrédients : </strong></p>
+<ul style="list-style: none;">
 ${petitDejeunerIngredientsString}
 </ul>
 <p>Calories du plat : ${plan.petit_dejeuner.plat.calories} kcal</p>
 
 
 <h2>Déjeuner:</h2>
+<p><strong>${plan.dejeuner.plat.nom}</strong></p>
 <p>Description : ${plan.dejeuner.plat.description}</p></br>
-${plan.dejeuner.plat.description}
-<ul>
+<p><strong>Ingrédients : </strong></p>
+<ul style="list-style: none;">
 ${DejeunerIngredientsString}
 </ul>
 <p>Calories du plat : ${plan.dejeuner.plat.calories} kcal</p>
 <h2>Dîner:</h2>
+<p><strong>${plan.diner.plat.nom}</strong></p>
 <p>Description : ${plan.diner.plat.description}</p></br>
-<ul>
+<p><strong>Ingrédients : </strong></p>
+<ul style="list-style: none;">
 ${DinerIngredientsString}
 </ul>
 <p>Calories du plat : ${plan.diner.plat.calories} kcal</p>
@@ -100,7 +104,7 @@ Cordialement,<p>
     },
     to: email,
     subject: "Send nutrition plat",
-    text: "ok",
+    text: `J'espère que vous allez bien. ${identite}, Suite à la soumission de votre formulaire nous vous transmettons votre programme sur la base de 3 repas quotidien.`,
     html: message,
     attachments: [attachment],
   };

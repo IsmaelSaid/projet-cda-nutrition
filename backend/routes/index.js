@@ -23,7 +23,17 @@ router.post("/mb", function (req, res) {
 });
 
 router.post("/plan", async function (req, res) {
-  const { mb, nom, prenom, email } = req.body;
+  let { mb, nom, prenom, email, choix } = req.body;
+  switch (choix) {
+    case "Maigrir":
+      mb = mb - 200;
+      break;
+    case "Grossir":
+      mb = mb + 300;
+      break;
+    default:
+  }
+
   console.log(req.body);
   const caloriesParRepas = Math.round(mb / 3);
   const platPetitDejeuner = await Plat.findOne({

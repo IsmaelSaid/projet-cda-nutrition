@@ -15,3 +15,8 @@ const calculeBesoinMacronutrimentsQuotidient = (mb) => {
 };
 
 module.exports = { calculateMB, calculeBesoinMacronutrimentsQuotidient };
+
+/**
+ * Pour les hommes, kcal : 1,083 x Poids (kg) 0,48 X taille (m) 0,50 x âge (an) - 0,13 ;
+ * Pour les femmes, kcal : 0,963 x Poids (kg) 0,48 X taille (m) 0,50 x âge (an) - 0,13.
+ */
