@@ -1,14 +1,12 @@
 import "./App.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut, Pie } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import { motion, useAnimation } from "framer-motion";
-import { BottomNavigation } from "@mui/material";
 
 import {
   calculeBesoinMacronutrimentsQuotidient,
@@ -22,13 +20,7 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import {
-  Form,
-  redirect,
-  useNavigate,
-  useSearchParams,
-  useLocation,
-} from "react-router-dom";
+import { Form, useNavigate, useLocation } from "react-router-dom";
 
 import { createTheme } from "@mui/material/styles";
 
@@ -71,7 +63,7 @@ function Root() {
       >
         <div id="message">
           <p id="landingpagetext">
-            Obtenez des conseils nutritionnels gratuitements en 2 minutes.
+            Obtenez des conseils nutritionnels gratuitement en 2 minutes.
           </p>
           <Button
             color="success"
@@ -117,8 +109,8 @@ export function MyForm() {
     { label: "Quelle est votre prénom ?", name: "prenom", type: "text" },
     { label: "Quelle est votre email ?", name: "email", type: "email" },
     { label: "Quelle est votre âge ?", name: "age", type: "number" },
-    { label: "Quelle est votre poids ?", name: "poids", type: "number" },
-    { label: "Quelle est votre taille ?", name: "taille", type: "number" },
+    { label: "Quelle est votre poids (kg) ?", name: "poids", type: "number" },
+    { label: "Quelle est votre taille (cm) ?", name: "taille", type: "number" },
     { label: "Quelle est votre sexe ?", name: "sexe", type: "radio" },
   ];
 
@@ -168,7 +160,13 @@ export function MyForm() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const result = { mb: mb, ...besoinMacronutrimentsQuotidient };
+    const result = {
+      mb: mb,
+      ...besoinMacronutrimentsQuotidient,
+      nom: formData.nom,
+      prenom: formData.prenom,
+      email: formData.email,
+    };
 
     const raw = JSON.stringify(result);
     const requestOptions = {
@@ -230,7 +228,7 @@ export function MyForm() {
                 name={questions[counter].name}
                 value={formData[questions[counter].name]}
                 type={questions[counter].type}
-                label={questions[counter].label}
+                label={questions[counter].name}
                 variant="standard"
                 required
                 onChange={handleChange}
@@ -280,12 +278,12 @@ export const Results = () => {
   const location = useLocation();
   const { result, data } = location.state;
   const labels = Object.keys(result);
-  const values = Object.values(result);
+  const values = Object.values(result).filter((e) => typeof e == "number");
   labels.shift();
   values.shift();
 
   const dataset = {
-    labels: labels,
+    labels: ["protéines", "glucides", "lipides"],
     datasets: [
       {
         label: "quantité en g",
